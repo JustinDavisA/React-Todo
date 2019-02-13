@@ -5,12 +5,12 @@ const ToDoForm = props => {
     <form onSubmit={props.addToDo}>
       <input
         type="text"
-        value={props.text}
-        name="text"
+        value={props.task}
+        name="task"
         onChange={props.changeHandler}
         placeholder="To Do..."
       />
-      <button type="submit">Add To Do</button>
+      <button type="submit">Add</button>
     </form>
   )
 }

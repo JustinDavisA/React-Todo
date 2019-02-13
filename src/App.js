@@ -1,41 +1,52 @@
 import React from 'react';
+
 import ToDo from './ToDo';
 import ToDoForm from './ToDoForm';
 
 const toDos = [
   {
-    text: 'Take Out Garbage'
+    task: 'Organize Garage',
+    id: 1528817077286,
+    completed: false
+  },
+  {
+    task: 'Bake Cookies',
+    id: 1528817084358,
+    completed: false
   }
 ];
-
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       toDos: toDos,
-      text: ''
-    }
+      task: '',
+      id: '',
+      completed: ''
+    };
   }
 
   addToDo = e => {
     e.preventDefault();
     const newToDo = {
-      text: this.addToDo.state.text
+      task: this.state.task,
+      id: this.state.id,
+      completed: this.state.completed
     };
-
     this.setState({
       toDos: [...this.state.toDos, newToDo],
-      text: ''
+      task: '',
+      id: '',
+      completed: ''
     });
   }
 
   changeHandler = e => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.task]: e.target.value,
+      [e.target.id]: e.target.value,
+      [e.target.completed]: e.target.value
     });
   }
 
@@ -45,13 +56,15 @@ class App extends React.Component {
         <h2>Welcome to your To do List!</h2>
         <div className="to-do-list">
           {this.state.toDos.map((toDoFromMap, i) => (
-            <ToDo key={i} to toDo={toDoFromMap} />
+            <ToDo key={i} toDo={toDoFromMap} />
           ))}
         </div>
         <ToDoForm
           addToDo={this.addToDo}
           changeHandler={this.changeHandler}
-          text={this.text}
+          task={this.task}
+          id={this.id}
+          completed={this.completed}
         />
       </div>
     );
