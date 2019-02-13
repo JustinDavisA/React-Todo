@@ -1,4 +1,6 @@
 import React from 'react';
+import ToDo from './ToDo';
+import ToDoForm from './ToDoForm';
 
 const toDos = [
   {
@@ -40,8 +42,17 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
-        <
+        <h2>Welcome to your To do List!</h2>
+        <div className="to-do-list">
+          {this.state.toDos.map((toDoFromMap, i) => (
+            <ToDo key={i} to toDo={toDoFromMap} />
+          ))}
+        </div>
+        <ToDoForm
+          addToDo={this.addToDo}
+          changeHandler={this.changeHandler}
+          text={this.text}
+        />
       </div>
     );
   }
