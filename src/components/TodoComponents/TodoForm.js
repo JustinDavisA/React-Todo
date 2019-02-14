@@ -7,10 +7,10 @@ const ToDoForm = props => {
         type="text"
         value={props.value}
         name="toDo"
-        onChange={props.changeToDo}
+        onChange={props.changeHandler}
         placeholder="To Do..."
       />
-      <button onClick={props.addToDo}>Add</button>
+      <button onClick={props.addHandler}>Add</button>
       <button>Clear Completed</button>
     </form>
   )

@@ -51,11 +51,13 @@ class App extends React.Component {
             toDos={this.state.toDos}
           />
         </div>
-        <ToDoForm
-          toDo={this.state.toDo}
-          addHandler={this.addToDo}
-          changeHandler={this.changeToDo}
-        />
+        <div className="to-do-form">
+          <ToDoForm
+            toDo={this.state.toDo}
+            addHandler={this.addToDo}
+            changeHandler={this.changeToDo}
+          />
+        </div>
       </div>
     );
   };
