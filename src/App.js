@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ToDo from './ToDo';
-import ToDoForm from './ToDoForm';
+import ToDoForm from './components/TodoComponents/ToDoForm';
+import ToDoList from './components/TodoComponents/ToDoList';
 
 const toDos = [
   {
@@ -21,54 +21,44 @@ class App extends React.Component {
     super();
     this.state = {
       toDos: toDos,
-      task: '',
-      id: '',
-      completed: ''
+      toDo: ''
     };
-  }
+  };
 
   addToDo = e => {
     e.preventDefault();
     const newToDo = {
-      task: this.state.task,
-      id: this.state.id,
-      completed: this.state.completed
+      toDo: this.state.toDo
     };
     this.setState({
       toDos: [...this.state.toDos, newToDo],
-      task: '',
-      id: '',
-      completed: ''
+      toDo: ''
     });
-  }
+  };
 
-  changeHandler = e => {
+  changeToDo = e => {
     this.setState({
-      [e.target.task]: e.target.value,
-      [e.target.id]: e.target.value,
-      [e.target.completed]: e.target.value
+      [e.target.toDo]: e.target.value
     });
-  }
+  };
 
   render() {
     return (
       <div>
         <h2>Welcome to your To do List!</h2>
         <div className="to-do-list">
-          {this.state.toDos.map((toDoFromMap, i) => (
-            <ToDo key={i} toDo={toDoFromMap} />
-          ))}
+          <ToDoList 
+            toDos={this.state.toDos}
+          />
         </div>
         <ToDoForm
-          addToDo={this.addToDo}
-          changeHandler={this.changeHandler}
-          task={this.task}
-          id={this.id}
-          completed={this.completed}
+          toDo={this.state.toDo}
+          addHandler={this.addToDo}
+          changeHandler={this.changeToDo}
         />
       </div>
     );
-  }
+  };
 }
 
 export default App;
