@@ -5,10 +5,11 @@ import ToDo from './ToDo';
 const ToDoList = props => {
   return (
     <div>
-        {props.toDos.map((toDo, i) => (
+        {props.toDos.map(toDo => (
             <ToDo 
+                toggleHandler={props.toggleHandler}
                 toDo={toDo}
-                key={i} 
+                key={toDo.id} 
             />
         ))}
     </div>

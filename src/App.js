@@ -43,17 +43,38 @@ class App extends React.Component {
     });
   };
 
+  toggleTodo = id => {
+    let toDos = this.state.toDos.slice();
+    toDos = toDos.map(toDo => {
+      if (toDo.id === id) {
+        toDo.completed = !toDo.completed;
+        return toDo;
+      } else {
+        return toDo;
+      }
+    });
+    this.setState({ toDos });
+  };
+
+  clearTodos = e => {
+    e.preventDefault();
+    let toDos = this.state.toDos.filter(toDo => !toDo.completed);
+    this.setState({ toDos });
+};
+
   render() {
     return (
-      <div>
+      <div className="to-do-app">
         <h2>Welcome to your To do List!</h2>
         <div className="to-do-list">
           <ToDoList 
+            toggleHandler={this.toggleTodo}
             toDos={this.state.toDos}
           />
         </div>
         <div className="to-do-form">
           <ToDoForm
+            clearHandler={this.clearTodos}
             toDo={this.state.toDo}
             addHandler={this.addToDo}
             changeHandler={this.changeToDo}

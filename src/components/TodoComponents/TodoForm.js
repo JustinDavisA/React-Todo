@@ -11,7 +11,7 @@ const ToDoForm = props => {
         placeholder="To Do..."
       />
       <button onClick={props.addHandler}>Add</button>
-      <button>Clear Completed</button>
+      <button onClick={props.clearHandler}>Clear Completed</button>
     </form>
   )
 }
