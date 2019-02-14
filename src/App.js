@@ -20,25 +20,26 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      toDos: toDos,
-      toDo: ''
+      toDos: toDos
     };
   };
 
   addToDo = e => {
     e.preventDefault();
     const newToDo = {
-      toDo: this.state.toDo
+      task: this.state.toDo,
+      id: Date.now(),
+      completed: false
     };
+    console.log(newToDo);
     this.setState({
-      toDos: [...this.state.toDos, newToDo],
-      toDo: ''
+      toDos: [...this.state.toDos, newToDo]
     });
   };
 
   changeToDo = e => {
     this.setState({
-      [e.target.toDo]: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
